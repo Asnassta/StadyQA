@@ -325,8 +325,11 @@ body {
 		}
 	}
 	&__profile {
-		background-color: $purple;
-		border-radius: 50%;
+		a {
+			display: block;
+			background-color: $purple;
+			border-radius: 50%;
+		}
 	}
 }
 
@@ -547,6 +550,7 @@ body {
 	}
 	&__inner {
 		display: flex;
+		flex-wrap: wrap;
 		justify-content: space-between;
 		>* {
 			width: calc(50% - 15px);
@@ -579,12 +583,36 @@ body {
 			padding-left: 8px;
 		}
 	}
+	@media(max-width: 1024px) {
+		&__select-wrapper {
+			position: relative;
+			&:after {
+  				content: "";
+  				width: 12px;
+  				height: 7px;
+  				background: url("../images/arrow-small.png") center no-repeat;
+  				position: absolute;
+  				top: 50%;
+  				right: 14px;
+  				z-index: 2;
+  				transform: translateY(-50%);
+			}
+		}
+	}
+	
 	.btn {
 		padding: 12px 15px;
 		width: 100%;
 	}
 	#card-consultation__check {
 		border: 1px solid #e1e1e1;
+	}
+	select {
+		appearance: none;
+		width: 100%;
+		border: 1px solid #e1e1e1;
+		padding: 8px 35px 8px 15px;
+		background-color: $wh;
 	}
 	.my-select {
 		font-family: 'FuturaPT', sans-serif;;
@@ -601,11 +629,13 @@ body {
 	&__country {
 		margin-top: 50px;
 		margin-right: -40px;
+		margin-bottom: -20px;
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-around;
 		.country-item {
 			margin-right: 40px;
+			margin-bottom: 20px;
 			&__icon {
 				width: 27px;
 				height: 27px;
@@ -1596,11 +1626,13 @@ body {
 		}
 		&-card {
 			&__decor {
+				right: -110px;
 				img {
 					max-width: 150px;
 				}
 			}
 			&__slider {
+				width: 100%;
 				box-shadow: 0 4px 16px rgba(73, 66, 81, 0.06);
 			}
 		}
@@ -1676,6 +1708,11 @@ body {
 		&__column {
 			width: 100%;
 		}
+		&-card {
+			&__decor {
+				display: none;
+			}
+		}
 	}
 	.popular {
 		&__inner {
@@ -1739,6 +1776,7 @@ body {
 			>* {
 				width: 100%;
 				text-align: center;
+				margin: 20px 20px;
 			}
 		}
 	}
@@ -1762,6 +1800,21 @@ body {
 			font-size: 30px;
 		}
 	}
+	.intro {
+		&__decor {
+			&_2 {
+				left: 20px;
+			}
+			&_3 {
+				top: 15px;
+				left: 365px;
+			}
+			&_5 {
+				top: -32px;
+				right: 30px;
+			}
+		}
+	}
 	.header {
 		z-index: 500;
 		&__mobile {
@@ -1778,6 +1831,9 @@ body {
 		}
 	}
 	.card-consultation {
+		&__title {
+			font-size: 20px;
+		}
 		&__inner {
 			flex-wrap: wrap;
 			>* {
@@ -1790,7 +1846,9 @@ body {
 		}
 	}
 	.help {
+		padding-top: 30px;
 		&__inner {
+			margin-top: 40px;
 			margin-bottom: -40px;
 			>* {
 				width: 100%;
@@ -1856,6 +1914,9 @@ body {
 			font-size: 12px;
 		}
 	}
+	.contact {
+		padding: 40px 0;
+	}
 	.faq {
 		&__item {
 			padding: 15px;
@@ -1870,15 +1931,12 @@ body {
 	}
 }
 
+
 @media(max-width: 375px) {
-	.intro {
-		&-card {
-			&__slider {
-				width: 100%;
-			}
-			&__decor {
-				display: none;
-			}
+	
+	.card-consultation {
+		&__title {
+			font-size: 16px;
 		}
 	}
 	.how {

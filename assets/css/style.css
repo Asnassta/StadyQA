@@ -370,7 +370,8 @@ body.hidden {
         background: linear-gradient(45deg, #ddaa00 1%, #d600a0 100%); }
       .header__social a.header__social-twit:hover {
         background-color: #39A3DA; }
-  .header__profile {
+  .header__profile a {
+    display: block;
     background-color: #5f318d;
     border-radius: 50%; }
 
@@ -566,6 +567,8 @@ body.hidden {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between; }
@@ -599,11 +602,34 @@ body.hidden {
       font-style: normal;
       color: #000000;
       padding-left: 8px; }
+  @media (max-width: 1024px) {
+    .card-consultation__select-wrapper {
+      position: relative; }
+      .card-consultation__select-wrapper:after {
+        content: "";
+        width: 12px;
+        height: 7px;
+        background: url("../images/arrow-small.png") center no-repeat;
+        position: absolute;
+        top: 50%;
+        right: 14px;
+        z-index: 2;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%); } }
   .card-consultation .btn {
     padding: 12px 15px;
     width: 100%; }
   .card-consultation #card-consultation__check {
     border: 1px solid #e1e1e1; }
+  .card-consultation select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+    border: 1px solid #e1e1e1;
+    padding: 8px 35px 8px 15px;
+    background-color: #fff; }
   .card-consultation .my-select {
     font-family: 'FuturaPT', sans-serif;
     font-size: 14px;
@@ -617,6 +643,7 @@ body.hidden {
   .popular__country {
     margin-top: 50px;
     margin-right: -40px;
+    margin-bottom: -20px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -625,7 +652,8 @@ body.hidden {
     -ms-flex-pack: distribute;
     justify-content: space-around; }
     .popular__country .country-item {
-      margin-right: 40px; }
+      margin-right: 40px;
+      margin-bottom: 20px; }
       .popular__country .country-item__icon {
         width: 27px;
         height: 27px; }
@@ -1545,9 +1573,12 @@ body.hidden {
     margin: 0 auto; }
     .intro__column:last-child {
       padding-left: 0px; }
-  .intro-card__decor img {
-    max-width: 150px; }
+  .intro-card__decor {
+    right: -110px; }
+    .intro-card__decor img {
+      max-width: 150px; }
   .intro-card__slider {
+    width: 100%;
     -webkit-box-shadow: 0 4px 16px rgba(73, 66, 81, 0.06);
     box-shadow: 0 4px 16px rgba(73, 66, 81, 0.06); }
   .mentors__inner {
@@ -1593,6 +1624,8 @@ body.hidden {
     padding-bottom: 30px; }
     .intro__column {
       width: 100%; }
+    .intro-card__decor {
+      display: none; }
   .popular__inner {
     -ms-flex-wrap: wrap;
     flex-wrap: wrap; }
@@ -1641,7 +1674,8 @@ body.hidden {
     flex-wrap: wrap; }
     .statistic__inner > * {
       width: 100%;
-      text-align: center; }
+      text-align: center;
+      margin: 20px 20px; }
   .footer__foot .container {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -1658,6 +1692,14 @@ body.hidden {
     font-size: 24px; }
     .title-main {
       font-size: 30px; }
+  .intro__decor_2 {
+    left: 20px; }
+  .intro__decor_3 {
+    top: 15px;
+    left: 365px; }
+  .intro__decor_5 {
+    top: -32px;
+    right: 30px; }
   .header {
     z-index: 500; }
     .header__mobile {
@@ -1668,6 +1710,8 @@ body.hidden {
       z-index: -1; }
     .header__links a {
       font-size: 20px; }
+  .card-consultation__title {
+    font-size: 20px; }
   .card-consultation__inner {
     -ms-flex-wrap: wrap;
     flex-wrap: wrap; }
@@ -1676,15 +1720,18 @@ body.hidden {
       margin-bottom: 30px; }
       .card-consultation__inner > *:last0child {
         margin-bottom: 0; }
-  .help__inner {
-    margin-bottom: -40px; }
-    .help__inner > * {
-      width: 100%;
-      margin-bottom: 40px; }
-  .help__title, .help__text {
-    font-size: 16px; }
-  .help__description {
-    font-size: 14px; }
+  .help {
+    padding-top: 30px; }
+    .help__inner {
+      margin-top: 40px;
+      margin-bottom: -40px; }
+      .help__inner > * {
+        width: 100%;
+        margin-bottom: 40px; }
+    .help__title, .help__text {
+      font-size: 16px; }
+    .help__description {
+      font-size: 14px; }
   .garancy__inner > * {
     width: 100%; }
   .step {
@@ -1724,6 +1771,8 @@ body.hidden {
     font-size: 14px; }
   .footer__link {
     font-size: 12px; }
+  .contact {
+    padding: 40px 0; }
   .faq__item {
     padding: 15px; }
   .faq__question {
@@ -1733,10 +1782,8 @@ body.hidden {
     padding: 15px 0 0; } }
 
 @media (max-width: 375px) {
-  .intro-card__slider {
-    width: 100%; }
-  .intro-card__decor {
-    display: none; }
+  .card-consultation__title {
+    font-size: 16px; }
   .how__inner {
     padding-left: 80px; }
     .how__inner:after {

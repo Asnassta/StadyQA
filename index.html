@@ -199,38 +199,43 @@
 							<form class="card-consultation">
 								<div class="card-consultation__title">Я хочу получить консультацию</div>
 								<div class="card-consultation__inner">
-									<div class="card-consultation__column">
+
 										<div class="card-consultation__item">
 											<div class="card-consultation__desc">По</div>
-											<select class="my-select">
-												<option value="1">Магистратуре</option>
-												<option value="2">Бакалавриату</option>
-											</select>
+                      <div class="card-consultation__select-wrapper">
+											   <select class="my-select">
+											     <option value="1">Магистратуре</option>
+											     <option value="2">Бакалавриату</option>
+											   </select>
+                      </div>
 										</div>
-										<div class="card-consultation__item">
-											<div class="card-consultation__check">
-												<input type="checkbox" name="card-consultation__check" id="card-consultation__check">
-												<label for="card-consultation__check">
-													<span></span>
-													<i>Полное сопровождение</i>
-												</label>
-											</div>
-										</div>	
-									</div><!--/card-consultation__column-->
-									<div class="card-consultation__column">
+											
 										<div class="card-consultation__item">
 											<div class="card-consultation__desc">В</div>
-											<select  class="my-select">
+                      <div class="card-consultation__select-wrapper">
+											   <select  class="my-select">
      										    <option data-img-src="assets/images/flag-italy.svg">Италия</option>
      										    <option data-img-src="assets/images/flag-france.svg">Франция</option>
      										    <option data-img-src="assets/images/flag-germany.svg">Германия</option>
      										    <option data-img-src="assets/images/flag-spain.svg">Испания</option>
      										</select>
+                      </div>
 										</div>
+
+                    <div class="card-consultation__item">
+                      <div class="card-consultation__check">
+                        <input type="checkbox" name="card-consultation__check" id="card-consultation__check">
+                        <label for="card-consultation__check">
+                          <span></span>
+                          <i>Полное сопровождение</i>
+                        </label>
+                      </div>
+                    </div>
+
 										<div class="card-consultation__item">
 											<a href="#" class="btn">Выбрать наставника</a>
 										</div>	
-									</div><!--/card-consultation__column-->
+
 								</div>
 							</form><!--/card-consultation-->
 						</div><!--/intro__column-->
