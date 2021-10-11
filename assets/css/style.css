@@ -399,7 +399,7 @@ body.hidden {
     font-size: 13px;
     font-weight: 500;
     color: #000000;
-    margin-left: 12px; }
+    margin-left: 9px; }
   .country-item:hover .country-item__icon {
     -webkit-transform: scale(1.15, 1.15);
     -ms-transform: scale(1.15, 1.15);
@@ -466,7 +466,7 @@ body.hidden {
       padding-top: 60px; }
   .intro-card {
     display: block;
-    padding: 40px 35px;
+    padding: 40px 20px;
     background-color: #fff;
     border-radius: 20px;
     position: relative;
@@ -535,10 +535,13 @@ body.hidden {
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
       -ms-flex-pack: distribute;
       justify-content: space-around; }
       .intro-card__countries > * {
-        margin-right: 12px; }
+        margin-right: 8px;
+        margin-bottom: 8px; }
         .intro-card__countries > *:last-child {
           margin-right: 0; }
     .intro-card__about {
