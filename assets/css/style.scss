@@ -419,11 +419,8 @@ body {
 			top: 30px;
 			right: -150px;
 		}
-
-
-
-
 	}
+
 	&__inner {
 		position: relative;
 		display: flex;
@@ -436,6 +433,7 @@ body {
 		}
 	}
 	&-card {
+		display: block;
 		padding: 40px 35px;
 		background-color: $wh;
 		border-radius: 20px;
@@ -445,12 +443,36 @@ body {
 			position: relative;
 			padding-bottom: 40px;
 		}
+		&__arrow {
+			position: absolute;
+			bottom: -9px;
+			cursor: pointer;
+			svg {
+				width: 15px;
+				height: 14px;
+				fill: #cfcfcf;
+				transition: all .2s linear;
+			}
+			&-prev {
+				left: 20px;
+				transform: rotate(90deg);
+			}
+			&-next {
+				right: calc(25% + 20px);
+				transform: rotate(-90deg);
+			}
+			&:hover {
+				svg {
+					fill: #333;
+				}
+			}
+		}
 		&__slider {
 			z-index: 2;
 			width: 75%;
 			.slick-dots {
 				position: absolute;
-				bottom: -36px;
+				bottom: -46px;
 				left: 50%;
 				transform: translateX(-50%);
 				display: flex;
@@ -723,15 +745,48 @@ body {
 }
 /*========/mentors============*/
 
+/*===========Reviews-box===========*/
+.reviews-box {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	&__review {
+		display: flex;
+		align-items: center;
+		svg {
+			width: 18px;
+			height: 19px;
+			fill: #423e2e;
+			transition: all .2s linear;
+			margin-right: 5px;
+		}
+	}
+	&__counter {
+		font-family: $ff;
+		font-size: 13px;
+		font-weight: 700;
+		color: $bl;
+		transition: all .2s linear;
+	}
+	.stars-block {
+		margin: 0 16px 0 12px;
+	}
+}
+/*===========/reviews-box===========*/
+
 /*========Card-mentors=========*/
 .card-mentors {
 	background-color: $wh;
 	box-shadow: 0 4px 16px rgba(73, 66, 81, 0.06);
 	border-radius: 12px;
+	display: flex;
+		flex-direction: column;
+		justify-content: space-between;
 	&__header {
 		padding: 12px 24px 12px 94px;
 		position: relative;
 		display: flex;
+		flex-wrap: wrap;
 		justify-content: flex-end;
 	}
 	&__best {
@@ -767,7 +822,6 @@ body {
 	&__name {
 		margin: 8px 0 12px;
 		text-align: center;
-		a {
 			display: inline-block;
 			font-family: $ff;
 			font-size: 18px;
@@ -787,16 +841,29 @@ body {
 				transition: all .2s linear;
 				transform: translateY(-50%);
 			}
-			&:hover {
-				color: $green;
-				&:after {
-					background-color: $green;
-				}
-			}
-		}
 	}
 	&__reviews {
 		margin-bottom: 15px;
+	}
+	&__link-block {
+		display: block;
+		text-align: center;
+		&:hover {
+			.card-mentors__name {
+				color: $green;
+				&:after {
+				background-color: $green;
+				}
+			}
+			.reviews-box__counter {
+				color:  $green;
+			}
+			.reviews-box__review {
+				svg {
+					fill:  $green;
+				}
+			}
+		}
 	}
 	&__about {
 		margin-bottom: 10px;
@@ -833,9 +900,24 @@ body {
 		&_big {
 			font-size: 15px;
 		}
+		&-more {
+			display: none;
+		}
+	}
+	&__btn-more {
+		color: $bl;
+		font-size: 20px;
+		transition: all .2s linear;
+		&:hover {
+			color: $purple;
+		}
+		&.active {
+			display: none;
+		}
 	}
 	&__buttons {
 		margin-top: 30px;
+		padding: 0px 15px 0px;
 	}
 	&__btn {
 		display: inline-block;
@@ -872,47 +954,17 @@ body {
 			background-color: $green;
 		}
 	}
+	.country-item {
+		margin-left: 5px;
+		margin-bottom: 8px;
+		&__name {
+			margin-left: 7px;
+		}
+	}
 }
 /*========/card-mentors=========*/
 
-/*===========Reviews-box===========*/
-.reviews-box {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	&__review {
-		display: flex;
-		align-items: center;
-		svg {
-			width: 18px;
-			height: 19px;
-			fill: #423e2e;
-			transition: all .2s linear;
-			margin-right: 5px;
-		}
-	}
-	&__counter {
-		font-family: $ff;
-		font-size: 13px;
-		font-weight: 700;
-		color: $bl;
-		transition: all .2s linear;
-	}
-	.stars-block {
-		margin: 0 16px 0 12px;
-	}
-	&:hover {
-		.reviews-box__counter {
-			color:  $green;
-		}
-		.reviews-box__review {
-			svg {
-				fill:  $green;
-			}
-		}
-	}
-}
-/*===========/reviews-box===========*/
+
 
 /*======Help===========*/
 .help {
@@ -926,15 +978,17 @@ body {
 			margin: 0 30px 120px;
 		}
 	}
-	&__item {
-		display: flex;
-	}
+	
 	&__icon {
 		flex: 0 0 35px;
 		margin-right: 16px;
 		padding-top: 5px;
-		img {
+		transition: all .3s linear;
+		svg {
 			max-width: 100%;
+			transition: all .3s linear;
+			height: 36px;
+			fill: $bl;
 		}
 	}
 	&__title {
@@ -944,8 +998,10 @@ body {
 		color: $bl;
 		line-height: 1.3;
 		margin-bottom: 10px;
+		transition: all .3s linear;
 	}
 	&__text {
+		padding-left: 51px;
 		font-family: $ff;
 		font-size: 18px;
 		font-weight: 400;
@@ -963,6 +1019,23 @@ body {
 		@media(min-width: 1200px) {
 			max-width: 868px;
 			margin: 45px auto 35px;
+		}
+	}
+	&__header {
+		display: flex;
+		transition: all .3s linear;
+	}
+	&__item {
+		&:hover {
+			.help__header {
+				transform: scale(1.05, 1.05);
+			}
+			.help__title {
+				color: $purple;
+			}
+			svg {
+				fill: $purple;
+			}
 		}
 	}
 }
@@ -998,7 +1071,7 @@ body {
 		&:hover {
 		.garancy__icon {
 			img {
-				transform: scale(1.05, 1.05);
+				transform: scale(1.1, 1.1);
 			}
 		}
 	}
@@ -1573,7 +1646,6 @@ body {
 	}
 	.popular {
 		&__country {
-			justify-content: flex-start;
 			.country-item {
 				margin-bottom: 25px;
 			}
@@ -1625,6 +1697,11 @@ body {
 			}
 		}
 		&-card {
+			&__arrow {
+				&-next {
+					right: 20px;
+				}
+			}
 			&__decor {
 				right: -110px;
 				img {
@@ -1815,6 +1892,15 @@ body {
 			}
 		}
 	}
+	.popular {
+		&__country {
+			justify-content: flex-start;
+		}
+		.country-item__icon {
+			width: 22px;
+			height: 22px;
+		}
+	}
 	.header {
 		z-index: 500;
 		&__mobile {
@@ -1930,6 +2016,7 @@ body {
 		}
 	}
 }
+
 
 
 @media(max-width: 375px) {

@@ -15,6 +15,12 @@ $(document).ready(function() {
 		$(this).toggleClass('active');
 	});
 
+/*===============card-mentors__info-more=================*/
+	$(".card-mentors__btn-more").on("click", function(event) {
+		event.preventDefault();
+		$(this).next().fadeToggle(333);
+		$(this).toggleClass('active');
+	});
 
 
  /*=============Navbar-langcurrency================*/
@@ -52,7 +58,9 @@ $(document).ready(function() {
   		infinite: true,
   		slidesToShow: 1,
   		slidesToScroll: 1,
-  		arrows: false,
+  		autoplay: true,
+  		prevArrow: $('.intro-card__arrow-prev'),
+		nextArrow: $('.intro-card__arrow-next'),
   		dots: true
 	});
 	/*=============/slider==============*/
