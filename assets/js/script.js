@@ -58,11 +58,76 @@ $(document).ready(function() {
   		infinite: true,
   		slidesToShow: 1,
   		slidesToScroll: 1,
-  		autoplay: true,
+  		//autoplay: true,
   		prevArrow: $('.intro-card__arrow-prev'),
 		nextArrow: $('.intro-card__arrow-next'),
   		dots: true
 	});
 	/*=============/slider==============*/
+
+
+
 	
 });
+	/*========Owl-slider==========*/
+$(window).on({
+    load: function() {
+      if( $(' .owl-carousel').length > 0 ) {
+        $(' .owl-carousel').each(function($i, $owl){
+          let $loop = false;
+   
+      
+ 
+
+          if(($($owl).find('.country-item').length) > 2 )
+          {
+          	$loop = true;
+          }
+
+          if($(this).hasClass('popular__country') == true)
+          {
+     			$m = 60;
+
+     			$max = 6;
+
+
+          }
+          else
+          {
+          	   $m = 15;
+          	   $max = 4;
+          }
+       
+
+ 
+
+
+          $($owl).owlCarousel({
+            dots: false,
+            nav: true,
+            loop: $loop,
+            autoWidth:true,
+            responsive:{
+               0:{
+                   items:2,
+                   margin: 15
+               },
+               600:{
+                   items:2,
+                    margin: $m
+               },
+               // 1000:{
+               //     items:$max,
+               //     margin: $m,
+
+               // }
+            }
+          });
+
+
+
+        });
+      }
+    }
+  });
+
