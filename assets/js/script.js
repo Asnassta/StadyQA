@@ -15,12 +15,33 @@ $(document).ready(function() {
 		$(this).toggleClass('active');
 	});
 
-/*===============card-mentors__info-more=================*/
-	$(".card-mentors__btn-more").on("click", function(event) {
+/*===============card-mentors___more=================*/
+	$(".card-mentors__button-more").on("click", function(event) {
 		event.preventDefault();
-		$(this).next().fadeToggle(333);
+		$(".card-mentors__more").slideToggle(333);
 		$(this).toggleClass('active');
 	});
+
+  /*===============card-mentors__info-more=================*/
+  $(".card-mentors__btn-more").on("click", function(event) {
+    event.preventDefault();
+    $(this).next().fadeToggle(333);
+    $(this).toggleClass('active');
+  });
+
+  /*=========Smooth scroll=============*/
+  $("[data-scroll]").on("click", function(event) {
+  event.preventDefault();
+ 
+      blockID = $(this).data('scroll');
+     
+      blockOffset = $('#'+blockID).offset().top;
+ 
+    $("html, body").animate ({
+      scrollTop: blockOffset 
+    }, 500);
+  });
+/*=========/smooth scroll=============*/
 
 
  /*=============Navbar-langcurrency================*/
@@ -40,6 +61,13 @@ $(document).ready(function() {
      $(this).parent().parent().find('.parent').attr('src', src);
      $(this).parent().fadeOut(222);
   });
+
+ /*===============Card-consultation_more=============*/
+ $(".card-consultation__btn-more").on("click", function(event) {
+   event.preventDefault();
+   $(".card-consultation__item_more").slideToggle(333);
+   $(this).toggleClass('active');
+ });
 
 
 	/*======Select-styler=============*/
@@ -90,21 +118,34 @@ $(window).on({
 
      			$max = 6;
 
-
+          $center = false;
           }
           else
           {
+
           	   $m = 15;
           	   $max = 4;
+               if($loop == true)
+               {
+                 $center = true;
+               }
+               else
+               {
+                $center = false;
+               }
           }
        
-
+          if( $center == true)
+          {
+            $($owl).addClass('center');
+          }
  
 
 
           $($owl).owlCarousel({
             dots: false,
             nav: true,
+            center: $center,
             loop: $loop,
             autoWidth:true,
             responsive:{
