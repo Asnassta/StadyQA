@@ -195,3 +195,12 @@
 		display: block;
 	}
 }
+
+@media(max-width: 414px) {
+	.intro-search  {
+		padding-top: 40px;
+		.title-main {
+			font-size: 27px;
+		}
+	}
+}

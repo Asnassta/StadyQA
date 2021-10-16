@@ -2340,3 +2340,9 @@ button.owl-prev {
     margin-bottom: 30px; }
   .btn-reset {
     display: block; } }
+
+@media (max-width: 414px) {
+  .intro-search {
+    padding-top: 40px; }
+    .intro-search .title-main {
+      font-size: 27px; } }
