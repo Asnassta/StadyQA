@@ -1,5 +1,6 @@
 @import 'fonts.scss';
 @import 'variables.scss';
+
 /*Reset
 ===============*/
 *{
@@ -164,7 +165,7 @@ body {
 	&__item {
 		display: block;
 		width: 100%;
-		height: 3px;
+		height: 2px;
 		background: $purple;
 		transition: background .2s linear;
 		position: absolute;
@@ -175,7 +176,7 @@ body {
 		&:after {
 		content: "";
 		width: 100%;
-		height: 3px;
+		height: 2px;
 		background: $purple;
 		position: absolute;
 		left: 0;
@@ -187,6 +188,7 @@ body {
 		}
 		&:after {
 			top: 9.5px;
+			width: 50%;
 		}
 	}
 	&.active {
@@ -200,6 +202,7 @@ body {
 			.burger__item:after {
 				transform-origin: left bottom;
 				transform: rotate(-45deg) translateX(0px);
+				width: 100%;
 			}
 		}
 	&-white {
@@ -229,6 +232,21 @@ body {
 		display: flex;
 		align-items: center;
 	}
+	/*fix*/
+	&__buttons {
+		display: flex;
+		align-items: center;
+		>* {
+			&:last-child {
+				@media(max-width: 1340px) {
+					padding: 7px 0 7px 17px;
+					margin-left: 17px;
+					border-left: 2px solid #EDEDED;
+				}
+			}
+		}
+	}
+	/*/fix*/
 	&__logo {
 		margin-right: 5%;
 		svg {
@@ -581,6 +599,46 @@ body {
 			width: calc(50% - 15px);
 		}
 	}
+	&__header {
+		display: flex;
+		justify-content: flex-end;
+	}
+	&__btn-more {
+		font-family: $ff;
+		font-size: 15px;
+		font-weight: 400;
+		color: $purple;
+		display: inline-block;
+		position: relative;
+		padding-left: 14px;
+		padding-right: 48px;
+		&:before {
+			content: "";
+			position: absolute;
+			top: 50%;
+			left: 0;
+			width: 4px;
+			height: 18px;
+			transform: translateY(-50%);
+			background: url("../images/dots.svg") center no-repeat;
+		}
+		&:after {
+			transition: all .3s linear;
+			content: "";
+			position: absolute;
+			top: 50%;
+			right: 0;
+			width: 17px;
+			height: 10px;
+			transform: translateY(-50%);
+			background: url("../images/arrow-big.png") center no-repeat;
+		}
+		&.active {
+			&:after {
+				transform: translateY(-50%) rotate(180deg);
+			}
+		}
+	}
 	&__item {
 		padding-left: 25px;
 		position: relative;
@@ -599,13 +657,45 @@ body {
 	&__check {
 		display: flex;
 		align-items: center;
-		i {
-			font-family: $ff;
-			font-size: 14px;
-			font-weight: 400;
-			font-style: normal;
-			color: $bl;
-			padding-left: 8px;
+		label {
+			position: relative;
+			span {
+				position: absolute;
+				left: -15px;
+				top: 0;
+				z-index: 1;
+				display: inline-block;
+				width: 14px;
+				height: 14px;
+				border-radius: 3px;
+				border: 1px solid #e1e1e1;
+				background-color: $wh;
+				cursor: pointer;
+			}
+			>i {
+				font-family: $ff;
+				font-size: 14px;
+				font-weight: 400;
+				font-style: normal;
+				color: $bl;
+				padding-left: 8px;
+				cursor: pointer;
+				margin-left: 5px;
+				@media(min-width: 1200px) {
+					max-width: 80%;
+				}
+			}
+		}
+		input {
+			width: 14px;
+			height: 14px;
+			border: 1px solid #e1e1e1;
+			background-color: $wh;
+			opacity: 0;
+			&:checked+label span {
+				border-radius: 3px;
+				background: url("../images/check.png") center no-repeat,  $lpurple;
+			}
 		}
 	}
 	@media(max-width: 1024px) {
@@ -632,13 +722,6 @@ body {
 	#card-consultation__check {
 		border: 1px solid #e1e1e1;
 	}
-	select {
-		appearance: none;
-		width: 100%;
-		border: 1px solid #e1e1e1;
-		padding: 8px 35px 8px 15px;
-		background-color: $wh;
-	}
 	.my-select {
 		font-family: 'FuturaPT', sans-serif;;
 		font-size: 14px;
@@ -647,6 +730,14 @@ body {
 	}
 }
 /*=====/card-consultation==========*/
+
+select {
+		appearance: none;
+		width: 100%;
+		border: 1px solid #e1e1e1;
+		padding: 8px 35px 8px 15px;
+		background-color: $wh;
+	}
 
 /*=======Popular========*/
 .popular {
@@ -730,6 +821,33 @@ body {
 			margin-right: 20px;
 		}
 	}
+	&-search {
+		margin-top: 50px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		&__item {
+			display: flex;
+			align-items: center;
+		}
+		&__title {
+			font-family: $ff;
+			font-size: 24px;
+			font-weight: 600;
+			color: $bl;
+			margin-right: 20px;
+			span {
+				color: $lpurple;
+			}
+		}
+		&__desc {
+			font-family: $ff;
+			font-size: 14px;
+			font-weight: 400;
+			color: $bl;
+			padding-right: 16px;
+		}
+	}
 	&__inner {
 		display: flex;
 		flex-wrap: wrap;
@@ -780,20 +898,21 @@ body {
 }
 
 .intro-card .owl-nav {
-    top: -6px;
+    top: -18px;
     padding-top: 23px;
     display: -webkit-box;
     display: -ms-flexbox;
+    line-height: 15px;
     display: flex;
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    height: 30px;
+    height: 40px;
  
 }
 
 .intro-card .owl-nav button {
-	width:10px;
+	width:25px;
 	text-align: center;
 	display: block;
 }
@@ -835,7 +954,7 @@ height:100%;
 		flex-direction: column;
 		justify-content: space-between;
 	&__header {
-		padding: 12px 24px 12px 94px;
+		padding: 12px 24px 12px 0;
 		position: relative;
 		display: flex;
 		flex-wrap: wrap;
@@ -845,16 +964,57 @@ height:100%;
 		margin: 0 0 0 auto;
 	}
 	.owl-nav {
-		top: -5px;
+		top: -8px;
 	}
 
 
+	&__more {
+		display: none;
+	}
 
+	&__button-more {
+		padding: 12px 44px 12px 16px;
+		border: 1px solid #b7b7b7;
+		border-radius: 6px;
+		background-color: $wh;
+		font-family: $ff;
+		font-size: 14px;
+		font-weight: 500;
+		color: #b7b7b7;
+		line-height: 1.2;
+		position: relative;
+		transition: all .3s linear;
+		display: inline-block;
+		&:after {
+			content: "";
+			width: 17px;
+			height: 10px;
+			background: url("../images/arrow-gray.svg") center no-repeat;
+			position: absolute;
+			right: 16px;
+			top: 50%;
+			transform: translateY(-50%);
+			transition: all .3s linear;
+		}
+		&:hover {
+			transform: scale(1.05, 1.05);
+		}
+		&.active {
+			&:after {
+				transform: translateY(-50%) rotate(180deg);
+			}
+		}
+		&__wrapper {
+			text-align: center;
+			margin-top: 85px;
+		}
+	}
 
 	&__best {
 		position: absolute;
-		top: 0;
-		left: 0;
+		top: 50%;
+		left: -15px;
+		transform: translateY(-50%);
 		background-color: $green;
 		border-top-left-radius: 4px;
 		border-bottom-right-radius: 4px;
@@ -876,6 +1036,7 @@ height:100%;
 	&__photo {
 		text-align: center;
 		margin: 0 auto;
+		position: relative;
 		img {
 			max-width: 100%;
 			border-radius: 50%;
@@ -931,8 +1092,8 @@ height:100%;
 		margin-bottom: 10px;
 		display: flex;
 		svg {
-			margin-right: 12px;
-			margin-top: 3px;
+			vertical-align: middle;
+			margin-right: 7px;
 			flex: 0 0 13px;
 			width: 13px;
 			height: 14px;
@@ -952,6 +1113,9 @@ height:100%;
 		color: $bl;
 		line-height: 1.3;
 		margin-bottom: 7px;
+		span {
+			vertical-align: middle;
+		}
 	}
 	&__info {
 		font-family: $ff;
@@ -1676,9 +1840,17 @@ height:100%;
 
 
 
+.card-mentors  .owl-carousel.center .owl-item.center {
+	opacity: 1;
+}
+
+.card-mentors .owl-carousel.center  .owl-item {
+opacity: 0.2;
+}
+
 button.owl-prev, 
 button.owl-next {
-	margin-top:-30px;
+	//margin-top:-30px;
 	font-size:30px!important;
 }
 
@@ -1691,6 +1863,31 @@ button.owl-prev {
 	margin: 0 auto;
 }
 
+.owl-nav {
+
+	line-height: 19px;
+	button {
+		width: 25px;
+		height: 25px;
+		border: 1px solid #fff!important;
+		box-shadow: 0 2px 9px rgba(65, 67, 81, 0.1);
+		border-radius: 50%;
+		margin-top: -10px;
+		transition: all .2s linear;
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		span {
+			font-size: 25px!important;
+			height: 25px!important;
+			color: #e1e1e1;
+			display: inline-block;
+		}
+		&:hover {
+			border: 1px solid #e1e1e1!important;
+		}
+	}
+}
 
 
 
@@ -2028,6 +2225,7 @@ button.owl-prev {
 	.card-consultation {
 		&__title {
 			font-size: 20px;
+			text-align: center;
 		}
 		&__inner {
 			flex-wrap: wrap;
@@ -2038,6 +2236,9 @@ button.owl-prev {
 					margin-bottom: 0;
 				}
 			}
+		}
+		&__check {
+			justify-content: center;
 		}
 	}
 	.help {
@@ -2146,4 +2347,16 @@ button.owl-prev {
 			font-size: 16px;
 		}
 	}
+	.card-mentors__best {
+		img {
+			width: 14px;
+		}
+		span {
+			font-size: 10px;
+			margin-left: 5px;
+		}
+	}
 }
+
+
+@import 'search.scss';
